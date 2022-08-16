@@ -51,7 +51,7 @@ const quill = new Quill('#editor', {
   },
 })
 ```
-
+`loadingClass` replaces the default class. You can find default classes [here](https://github.com/zavalen/quill2-image-uploader/blob/master/dist/quill.imageUploader.min.css) and use them as example. 
 
 Example of uploadImage function
 ```javascript
