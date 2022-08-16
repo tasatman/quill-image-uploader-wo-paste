@@ -7,6 +7,8 @@ Adds a button to the toolbar for users to click, also handles drag,dropped and p
 
 For Quill version `2.0.0-dev.4d`. 
 
+Forked from: https://github.com/NoelOConnell/quill-image-uploader
+
 ## Demo
 
 ![Image of Yaktocat](/static/quill-example.gif)
