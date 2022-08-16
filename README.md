@@ -18,14 +18,14 @@ Forked from: https://github.com/NoelOConnell/quill-image-uploader
 Install with npm:
 
 ```bash
-npm install quill-image-uploader --save
+npm install quill2-image-uploader --save
 ```
 
 ### Webpack/ES6
 
 ```javascript
 import Quill from "quill";
-import ImageUploader from "quill.imageUploader.js";
+import ImageUploader from "quill2-image-uploader";
 
 Quill.register("modules/imageUploader", ImageUploader);
 
