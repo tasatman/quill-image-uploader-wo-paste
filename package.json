@@ -1,6 +1,6 @@
 {
     "name": "quill2-image-uploader",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "repository": "https://github.com/zavalen/quill2-image-uploader.git",
     "description": "A module for Quill version 2.0.0-dev.4d rich text editor to allow images to be uploaded to a server instead of being base64 encoded",
     "main": "src/quill.imageUploader.js",
@@ -43,8 +43,5 @@
         "webpack": "4.43.0",
         "webpack-cli": "3.3.11",
         "webpack-dev-server": "3.10.3"
-    },
-    "peerDependencies": {
-        "quill": "2.0.0-dev.4d"
     }
 }
