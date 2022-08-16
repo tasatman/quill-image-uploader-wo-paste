@@ -1,8 +1,8 @@
 {
     "name": "quill2-image-uploader",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "repository": "https://github.com/zavalen/quill2-image-uploader.git",
-    "description": "A module for Quill version 2.0.0-dev.4d rich text editor to allow images to be uploaded to a server instead of being base64 encoded",
+    "description": "A module for Quill (any version) rich text editor to allow images to be uploaded to a server instead of being base64 encoded",
     "main": "src/quill.imageUploader.js",
     "eslintConfig": {
         "extends": "airbnb",
@@ -17,6 +17,7 @@
         "publish": "npm publish"
     },
     "keywords": [
+        "quill2",
         "quill",
         "quilljs",
         "image",

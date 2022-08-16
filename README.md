@@ -1,13 +1,9 @@
-# Quill ImageHandler Module
-
-
+# Quill2 ImageHandler Module
 
 A module for Quill rich text editor to allow images to be uploaded to a server instead of being base64 encoded.
-Adds a button to the toolbar for users to click, also handles drag,dropped and pasted images.
+Adds a button to the toolbar for users to click, also handles drag, dropped and pasted images. You can add your own class for image loading.
 
-For Quill version `2.0.0-dev.4d`. 
-
-Forked from: https://github.com/NoelOConnell/quill-image-uploader
+For any Quill version (even `2.0.0-dev`). 
 
 ## Demo
 
@@ -15,69 +11,71 @@ Forked from: https://github.com/NoelOConnell/quill-image-uploader
 
 ### Install
 
-Install with npm:
 
 ```bash
-npm install quill2-image-uploader --save
+npm install --save quill2-image-uploader 
 ```
 
-### Webpack/ES6
+### Example
 
 ```javascript
+
 import Quill from "quill";
 import ImageUploader from "quill2-image-uploader";
+import { uploadImage } from '../api/images'
 
-Quill.register("modules/imageUploader", ImageUploader);
+Quill.register(Quill.register(
+  {
+    'modules/imageUploader': ImageUploader,
+  },
+  true,
+))
 
-const quill = new Quill(editor, {
+const quill = new Quill('#editor', {
   // ...
   modules: {
     // ...
-    imageUploader: {
-      upload: (file) => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve(
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png"
-            );
-          }, 3500);
-        });
+      imageUploader: {
+        upload: async (file) => {
+          try {
+              const formData = new FormData()
+              formData.append('image', file)
+              const imageUrl = await uploadImage(formData)
+              return imageUrl
+          } catch (error) {
+            console.log(error)
+          }
+        },
+        loadingClass: 'image-loading', // default 'quill-image-uploading'
       },
-    },
   },
-});
+})
 ```
 
-### Quickstart (React with react-quill)
 
-React Example on [CodeSandbox](https://codesandbox.io/s/react-quill-demo-qr8xd)
-
-### Quickstart (script tag)
-
-Example on [CodeSandbox](https://codesandbox.io/s/mutable-tdd-lrsvh)
-
+Example of uploadImage function
 ```javascript
-// A link to quill.js
+
+import axios from 'axios'
+
+const uploadImage = (formData) => {
+  return axios
+    .post(`/image/store`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then((data) => data.data)
+}
+```
+
+Or using html
+```html
 <script src="/dist/quill.js"></script>
 <script src="/dist/quill.imageUploader.min.js"></script>
-
-Quill.register("modules/imageUploader", ImageUploader);
-
-var quill = new Quill(editor, {
-  // ...
-  modules: {
-    // ...
-    imageUploader: {
-      upload: file => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve(
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png"
-            );
-          }, 3500);
-        });
-      }
-    }
-  }
-});
 ```
+
+
+
+That module for Quill has been forked from: https://github.com/NoelOConnell/quill-image-uploader. 
+
