@@ -13,7 +13,7 @@ class ImageUploader {
     }
 
     if (this.options.loadingClass) {
-      LoadingImage.className = loadingClass 
+      LoadingImage.className = this.options.loadingClass 
     }
 
     const toolbar = this.quill.getModule("toolbar");
