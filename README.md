@@ -7,13 +7,13 @@ For any Quill version (even `2.0.0-dev`).
 
 ## Demo
 
-![Image of Yaktocat](/static/quill-example.gif)
+![Image](/static/quill-example.gif)
 
-### Install
+### Inst
 
 
 ```bash
-npm install --save quill2-image-uploader 
+npm install quill2-image-uploader 
 ```
 
 ### Example
@@ -46,12 +46,15 @@ const quill = new Quill('#editor', {
             console.log(error)
           }
         },
-        loadingClass: 'image-loading', // default 'quill-image-uploading'
+        loadingClass: 'uploading-image', // default 'quill-image-uploading'
       },
   },
 })
 ```
-`loadingClass` replaces the default class. You can find default classes [here](https://github.com/zavalen/quill2-image-uploader/blob/master/dist/quill.imageUploader.min.css) and use them as example. 
+The `loadingClass` replaces the default class. You can find default classes [here](https://github.com/zavalen/quill2-image-uploader/blob/master/dist/quill.imageUploader.min.css) and use them as example. 
+
+By default it looks like that: 
+![Image](/static/uploading.png)
 
 Example of uploadImage function
 ```javascript
