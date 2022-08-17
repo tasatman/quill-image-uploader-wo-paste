@@ -54,6 +54,7 @@ const quill = new Quill('#editor', {
 The `loadingClass` replaces the default class. You can find default classes [here](https://github.com/zavalen/quill2-image-uploader/blob/master/dist/quill.imageUploader.min.css) and use them as example. 
 
 By default it looks like that: 
+
 ![Image](/static/uploading.png)
 
 Example of uploadImage function
