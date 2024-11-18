@@ -20,10 +20,8 @@ class ImageUploader {
     toolbar.addHandler("image", this.selectLocalImage.bind(this));
 
     this.handleDrop = this.handleDrop.bind(this);
-    this.handlePaste = this.handlePaste.bind(this);
 
     this.quill.root.addEventListener("drop", this.handleDrop, false);
-    this.quill.root.addEventListener("paste", this.handlePaste, false);
   }
 
   selectLocalImage() {
@@ -83,31 +81,6 @@ class ImageUploader {
         this.range = this.quill.getSelection();
         this.readAndUploadFile(file);
       }, 0);
-    }
-  }
-
-  handlePaste(evt) {
-    const clipboard = evt.clipboardData || window.clipboardData;
-
-    // IE 11 is .files other browsers are .items
-    if (clipboard && (clipboard.items || clipboard.files)) {
-      const items = clipboard.items || clipboard.files;
-      const IMAGE_MIME_REGEX = /^image\/(jpe?g|gif|png|svg|webp)$/i;
-
-      for (let i = 0; i < items.length; i++) {
-        if (IMAGE_MIME_REGEX.test(items[i].type)) {
-          const file = items[i].getAsFile ? items[i].getAsFile() : items[i];
-
-          if (file) {
-            this.range = this.quill.getSelection();
-            evt.preventDefault();
-            setTimeout(() => {
-              this.range = this.quill.getSelection();
-              this.readAndUploadFile(file);
-            }, 0);
-          }
-        }
-      }
     }
   }
 
